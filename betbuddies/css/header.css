@@ -1,0 +1,48 @@
+/* styles/header.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #00e5ff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #00e5ff;
+  color: #0f2027;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
