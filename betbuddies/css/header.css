@@ -3,7 +3,6 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f8;
 }
 
 header {
@@ -45,4 +44,9 @@ header {
 .user-name {
   font-size: 1rem;
   font-weight: 500;
+}
+
+.close_session{
+  color: #00e5ff;
+  text-decoration: none;
 }
