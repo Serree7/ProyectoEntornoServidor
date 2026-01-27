@@ -1,0 +1,179 @@
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 255, 153, 0.06),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #0e0e11, #0b0b10);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: #eaeaea;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.apuestas {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* ===== TARJETAS ===== */
+.card {
+  background: #15151c;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== BIENVENIDA ===== */
+.apuestas__bienvenida {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apuestas__titulo {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.apuestas__saldo {
+  font-size: 1.1rem;
+}
+
+.saldo__cantidad {
+  color: #00ff99;
+  font-weight: 700;
+}
+
+/* ===== CREAR APUESTA ===== */
+.apuestas__subtitulo {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.form-apuesta {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-apuesta__grupo {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-apuesta__label {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #bdbdbd;
+}
+
+.form-apuesta__input {
+  padding: 12px 14px;
+  background: #0e0e11;
+  border: 1px solid #2c2c36;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-apuesta__input:focus {
+  outline: none;
+  border-color: #00ff99;
+}
+
+.form-apuesta__btn {
+  margin-top: 10px;
+  padding: 14px;
+  background: linear-gradient(135deg, #00ff99, #00cc77);
+  border: none;
+  border-radius: 10px;
+  color: #0e0e11;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.form-apuesta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 255, 153, 0.4);
+}
+
+/* ===== TABLA APUESTAS ===== */
+.tabla-wrapper {
+  overflow-x: auto;
+}
+
+.tabla-apuestas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.tabla-apuestas thead {
+  background: #1d1d26;
+}
+
+.tabla-apuestas th,
+.tabla-apuestas td {
+  padding: 12px;
+  text-align: center;
+}
+
+.tabla-apuestas th {
+  color: #bdbdbd;
+  font-weight: 600;
+}
+
+.tabla-apuestas tbody tr {
+  border-bottom: 1px solid #2a2a33;
+}
+
+.tabla-apuestas tbody tr:hover {
+  background: #1b1b23;
+}
+
+/* ===== ESTADOS ===== */
+.estado {
+  font-weight: 700;
+}
+
+.estado--pendiente {
+  color: #ffcc00;
+}
+
+.estado--ganada {
+  color: #00ff99;
+}
+
+.estado--perdida {
+  color: #ff4d4d;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .apuestas {
+    grid-template-columns: 1fr;
+  }
+
+  .apuestas__bienvenida {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

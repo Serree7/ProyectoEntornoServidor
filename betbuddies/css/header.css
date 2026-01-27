@@ -1,0 +1,86 @@
+/* styles/header.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #00e5ff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #00e5ff;
+  color: #0f2027;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.close_session{
+  color: #00e5ff;
+  text-decoration: none;
+}
+
+
+/* Contenedor del rol */
+.user-rol {
+    display: inline-block;       /* Se ajusta al tamaño del contenido */
+    margin-left: 15px;           /* Separación del avatar o nombre */
+}
+
+/* Enlace de configuración estilo botón */
+.user-rol .config {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4CAF50;   /* Verde agradable */
+    color: #fff;                  /* Texto blanco */
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 6px;           /* Bordes redondeados */
+    text-decoration: none;         /* Quita subrayado */
+    transition: all 0.3s ease;    /* Animación suave */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* Sombra sutil */
+}
+
+/* Hover / efecto al pasar el mouse */
+.user-rol .config:hover {
+    background-color: #45a049;  /* Verde más oscuro */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-1px); /* Pequeño levantamiento */
+}
+
+/* Opcional: efecto de click */
+.user-rol .config:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,10 @@
+ :root {
+            --primary: #00ff99;
+            --primary-dark: #00cc77;
+            --bg-black: #050505;
+            --roulette-green: #008000;
+            --roulette-red: #be0000;
+            --roulette-black: #111111;
+            --roulette-gold: #ffd700;
+            --transition: all 0.3s ease;
+        }
