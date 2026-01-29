@@ -4,6 +4,17 @@ require "conexion.php";
 
 $mensaje = "";
 
+/**
+ * Función de registro con ESCUDO para evitar errores de duplicidad
+ */
+if (!function_exists('registrarLog')) {
+    function registrarLog($conexion, $usuario_id, $accion) {
+        $sql = "INSERT INTO logs_actividad (usuario_id, accion) VALUES (:uid, :acc)";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute(['uid' => $usuario_id, 'acc' => $accion]);
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Recoger datos
@@ -30,6 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["email"]  = $user["email"];
             $_SESSION["rol"] = strtolower(trim($user["rol"]));
             $_SESSION["saldo"]  = $user["saldo"];
+
+            // --- REGISTRO DE LOG: Inicio de sesión ---
+            registrarLog($conexion, $user["id"], "Inició sesión en el sistema");
 
             // Cookie segura
             setcookie(
@@ -58,17 +72,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <title>BetBuddies | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Tus archivos CSS -->
     <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
 
-<!-- Ruleta de fondo -->
 <div class="bg-scene">
     <div class="roulette-container">
         <div class="roulette-wheel"></div>
@@ -76,7 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </div>
 <div class="overlay-light"></div>
 
-<!-- Formulario de login -->
 <div class="login-card">
     <h2>BetBuddies</h2>
 
@@ -87,7 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 
     <form method="POST">
-
         <div class="form-group">
             <label>Usuario</label>
             <div class="input-box">
@@ -116,14 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </form>
 </div>
 
-<script>
-const togglePassword = document.getElementById("togglePassword");
-const password = document.getElementById("password");
-
-togglePassword.addEventListener("click", () => {
-    password.type = password.type === "password" ? "text" : "password";
-    togglePassword.querySelector("i").classList.toggle("fa-eye-slash");
-});
+<script src="js/script.js">
 </script>
 
 </body>

@@ -27,10 +27,10 @@ $inicial = strtoupper(substr($nombre, 0, 1));
       <p><?= htmlspecialchars($nombre) ?></p>
     </div>
 
-    <a id="apuestas" class="close_session" href="#">Apuestas</a>
+    <a id="apuestas" class="close_session" href="">Apuestas</a>
 
     <?php if ($rol === "admin"): ?>
-      <a id="configuracionBtn" class="close_session" href="#">Configuración</a>
+      <a id="configuracionBtn" class="close_session" href="">Configuración</a>
     <?php endif; ?>
 
     <a class="close_session" href="../logout.php">Cerrar Sesión</a>

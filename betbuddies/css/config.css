@@ -1,19 +1,43 @@
 .config-menu {
+    display: flex;
+    gap: 10px;
     list-style: none;
     padding: 0;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    overflow-x: auto;
 }
 
 .config-menu li {
-    padding: 12px;
-    border-bottom: 1px solid #333;
+    background: var(--bg-card); /* Ajusta según tus variables */
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
+    border: 1px solid #444;
+    white-space: nowrap;
 }
 
-.config-menu li:hover {
-    background: #222;
+.config-menu li.active {
+    background: #00ff99;
+    color: #000;
 }
 
-.config-panel {
-    margin-top: 20px;
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.btn-delete {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
 }

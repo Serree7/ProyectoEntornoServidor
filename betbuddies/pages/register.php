@@ -3,6 +3,17 @@ require "../conexion.php";
 
 $mensaje = "";
 
+/**
+ * Función de registro con ESCUDO para evitar errores de duplicidad
+ */
+if (!function_exists('registrarLog')) {
+    function registrarLog($conexion, $usuario_id, $accion) {
+        $sql = "INSERT INTO logs_actividad (usuario_id, accion) VALUES (:uid, :acc)";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute(['uid' => $usuario_id, 'acc' => $accion]);
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $nombre  = trim($_POST["nombre"] ?? "");
@@ -39,7 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 "password" => $hash
             ]);
 
-            header("Location: ../index.php");
+            // --- REGISTRO DE LOG: Nuevo Usuario ---
+            $nuevo_id = $conexion->lastInsertId(); // Captura el ID generado para el log
+            registrarLog($conexion, $nuevo_id, "Se registró como nuevo usuario (Saldo inicial: 100€)");
+            // --------------------------------------
+
+            header("Location: ../index.php?registro=exito");
             exit;
         }
     }
@@ -52,10 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <title>Registro | BetBuddies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="../css/index.css">
 </head>
-<body style="background-color: #000000d1;">
+<body>
 
 <div class="login-card">
     <h2>Registro BetBuddies</h2>
@@ -67,7 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 
     <form method="POST">
-
         <div class="form-group">
             <label>Usuario</label>
             <input type="text" name="nombre" required>
@@ -94,7 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ¿Ya tienes cuenta?
             <a href="../index.php">Inicia sesión</a>
         </div>
-
     </form>
 </div>
 
