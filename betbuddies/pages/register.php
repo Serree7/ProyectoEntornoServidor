@@ -1,4 +1,3 @@
-```php
 <?php
 require "../conexion.php";
 
@@ -56,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <link rel="stylesheet" href="../css/index.css">
 </head>
-<body>
+<body style="background-color: #000000d1;">
 
 <div class="login-card">
     <h2>Registro BetBuddies</h2>
@@ -101,5 +100,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </body>
 </html>
-```
-xº
