@@ -1,0 +1,19 @@
+.config-menu {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.config-menu li {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+
+.config-menu li:hover {
+    background: #222;
+}
+
+.config-panel {
+    margin-top: 20px;
+}

@@ -1,13 +1,44 @@
-let apuestas_panel = document.getElementById("apuestas");
+let apuestas = document.getElementById("apuestas");
 let apuesta = document.getElementById("apuesta");
 
-const mostrarpanelapuestas = () => {
-    const estilo = window.getComputedStyle(apuesta).display;
-    if(estilo === "none") {
-        apuesta.style.display = "grid";
-    } else {
+let configuracionBtn = document.getElementById("configuracionBtn");
+let configuracion = document.getElementById("configuracion");
+
+// ----------------- PANEL PRINCIPAL -----------------
+
+apuestas.addEventListener("click", function (e) {
+    e.preventDefault();
+    apuesta.style.display = "block";
+    if (configuracion) configuracion.style.display = "none";
+});
+
+if (configuracionBtn) {
+    configuracionBtn.addEventListener("click", function (e) {
+        e.preventDefault();
         apuesta.style.display = "none";
-    }
+        configuracion.style.display = "block";
+    });
 }
 
-apuestas_panel.addEventListener("click", mostrarpanelapuestas);
+// ----------------- SUBMENÚ CONFIG -----------------
+
+let configItems = document.querySelectorAll(".config-menu li");
+let configPanels = document.querySelectorAll(".config-panel");
+
+configItems.forEach(item => {
+    item.addEventListener("click", () => {
+
+        // Ocultar todos los subpaneles
+        configPanels.forEach(panel => {
+            panel.style.display = "none";
+        });
+
+        // Mostrar el panel correspondiente
+        let panelId = item.getAttribute("data-panel");
+        let panel = document.getElementById(panelId);
+
+        if (panel) {
+            panel.style.display = "block";
+        }
+    });
+});
