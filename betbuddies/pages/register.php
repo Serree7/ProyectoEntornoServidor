@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
 </head>
-<body>
+<body  style="background-color: #000000d1;">
 
 <div class="login-card">
     <h2>Registro BetBuddies</h2>
