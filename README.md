@@ -6,8 +6,8 @@ Alumnos:
 
 Programas:
 
-  -Visual Studio Code
-  -PhpMyAdmin o MongoDB
+  -Visual Studio Code (HTML, CSS, JS & PHP)
+  -PhpMyAdmin
 
 PROYECTO: BetBuddies
 
