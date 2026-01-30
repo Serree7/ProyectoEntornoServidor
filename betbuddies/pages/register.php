@@ -7,7 +7,8 @@ $mensaje = "";
  * Función de registro con ESCUDO para evitar errores de duplicidad
  */
 if (!function_exists('registrarLog')) {
-    function registrarLog($conexion, $usuario_id, $accion) {
+    function registrarLog($conexion, $usuario_id, $accion)
+    {
         $sql = "INSERT INTO logs_actividad (usuario_id, accion) VALUES (:uid, :acc)";
         $stmt = $conexion->prepare($sql);
         $stmt->execute(['uid' => $usuario_id, 'acc' => $accion]);
@@ -50,6 +51,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 "password" => $hash
             ]);
 
+            // --- ENVÍO DE EMAIL DE BIENVENIDA ---
+            $asunto = "Cuenta creada en BetBuddies";
+
+            $contenido = "Hola $nombre, Tu cuenta en BetBuddies se ha creado correctamente 🎉. Ya puedes iniciar sesión y empezar a hacer tus apuestas. ¡Buena suerte!. Un saludo El equipo de BetBuddies";
+
+            $cabeceras = "From: no-reply@betbuddies.com\r\n";
+            $cabeceras .= "Content-Type: text/plain; charset=UTF-8";
+
+            mail($email, $asunto, $contenido, $cabeceras);
+
             // --- REGISTRO DE LOG: Nuevo Usuario ---
             $nuevo_id = $conexion->lastInsertId(); // Captura el ID generado para el log
             registrarLog($conexion, $nuevo_id, "Se registró como nuevo usuario (Saldo inicial: 100€)");
@@ -64,52 +75,55 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Registro | BetBuddies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
 </head>
-<body  style="background-color: #000000d1;">
 
-<div class="login-card">
-    <h2>Registro BetBuddies</h2>
+<body style="background-color: #000000d1;">
 
-    <?php if ($mensaje): ?>
-        <p style="color:red; text-align:center;">
-            <?= htmlspecialchars($mensaje) ?>
-        </p>
-    <?php endif; ?>
+    <div class="login-card">
+        <h2>Registro BetBuddies</h2>
 
-    <form method="POST">
-        <div class="form-group">
-            <label>Usuario</label>
-            <input type="text" name="nombre" required>
-        </div>
+        <?php if ($mensaje): ?>
+            <p style="color:red; text-align:center;">
+                <?= htmlspecialchars($mensaje) ?>
+            </p>
+        <?php endif; ?>
 
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" required>
-        </div>
+        <form method="POST">
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" name="nombre" required>
+            </div>
 
-        <div class="form-group">
-            <label>Contraseña</label>
-            <input type="password" name="password" required>
-        </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
 
-        <div class="form-group">
-            <label>Repetir contraseña</label>
-            <input type="password" name="password2" required>
-        </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" name="password" required>
+            </div>
 
-        <button type="submit">Crear cuenta</button>
+            <div class="form-group">
+                <label>Repetir contraseña</label>
+                <input type="password" name="password2" required>
+            </div>
 
-        <div class="extra">
-            ¿Ya tienes cuenta?
-            <a href="../index.php">Inicia sesión</a>
-        </div>
-    </form>
-</div>
+            <button type="submit">Crear cuenta</button>
+
+            <div class="extra">
+                ¿Ya tienes cuenta?
+                <a href="../index.php">Inicia sesión</a>
+            </div>
+        </form>
+    </div>
 
 </body>
+
 </html>

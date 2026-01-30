@@ -79,11 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 
 <div class="bg-scene">
-    <div class="roulette-container">
-        <div class="roulette-wheel"></div>
-    </div>
+    <div class="stairs"></div>
 </div>
 <div class="overlay-light"></div>
+
 
 <div class="login-card">
     <h2>BetBuddies</h2>

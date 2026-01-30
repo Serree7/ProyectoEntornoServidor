@@ -8,7 +8,7 @@ let configuracion = document.getElementById("configuracion");
 
 apuestas.addEventListener("click", function (e) {
     e.preventDefault();
-    apuesta.style.display = "block";
+    apuesta.style.display = "flex";
     if (configuracion) configuracion.style.display = "none";
     
     // Opcional: Quitar clase activa del botón de config si existe
